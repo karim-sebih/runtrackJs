@@ -1,0 +1,34 @@
+<h1>Reconstituez le logo laplateforme</h1>
+<button id="shuffleButton">Mélanger les images</button>
+<div class="gallery" id="image-container">
+    <div class="img1">
+    <img src="./images/logo1.PNG" alt="" id="1">
+    <img src="./images/logo2.PNG" alt="" id="2">
+    <img src="./images/logo3.PNG" alt="" id="3">
+    <img src="./images/logo4.PNG" alt="" id="4">
+    <img src="./images/logo5.PNG" alt="" id="5">
+    <img src="./images/logo6.PNG" alt="" id="6">
+    <img src="./images/logo7.PNG" alt="" id="7">
+    <img src="./images/logo8.PNG" alt="" id="8">
+    <img src="./images/logo9.PNG" alt="">
+</div>
+<div id="message"></div>
+
+<script>
+     $(document).ready(function () {
+        let correctOrder = ["1", "2", "3", "4", "5", "6","7","8","9"];
+     
+        function shuffleImages() {
+                let images = $("#image-container img").toArray();
+                images.sort(() => Math.random() - 0.5);
+                $("#image-container").html(images);
+            }
+            function checkOrder() {
+                let currentOrder = $("#image-container img").map(function () {
+                    return this.id;
+
+                }).get();
+            }
+
+     })
+</script>

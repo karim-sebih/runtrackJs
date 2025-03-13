@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arc-en-ciel Puzzle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .slot {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border: 2px solid black;
+        }
+        img {
+            width: 100px;
+            height: 100px;
+            cursor: grab;
+        }
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reconstituez l'Arc-en-ciel</h1>
+    <button onclick="shuffleImages()">Mélanger</button>
+    <div class="container" id="image-container"></div>
+    <div id="message"></div>
+
+    <script>
+        const correctOrder = ["1", "2", "3", "4", "5", "6"];
+        let images = [...correctOrder];
+        
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+        
+        function shuffleImages() {
+            shuffle(images);
+            renderImages();
+        }
+        
+        function renderImages() {
+            const container = document.getElementById("image-container");
+            container.innerHTML = "";
+            images.forEach(id => {
+                let img = document.createElement("img");
+                img.src = `images/${id}.png`;
+                img.draggable = true;
+                img.id = id;
+                img.addEventListener("dragstart", dragStart);
+                container.appendChild(img);
+            });
+        }
+
+        function dragStart(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        function checkOrder() {
+            const currentOrder = Array.from(document.querySelectorAll("#image-container img"))
+                .map(img => img.id);
+            const message = document.getElementById("message");
+            if (JSON.stringify(currentOrder) === JSON.stringify(correctOrder)) {
+                message.textContent = "Vous avez gagné";
+                message.style.color = "green";
+            } else {
+                message.textContent = "Vous avez perdu";
+                message.style.color = "red";
+            }
+        }
+
+        document.getElementById("image-container").addEventListener("dragover", event => {
+            event.preventDefault();
+        });
+
+        document.getElementById("image-container").addEventListener("drop", event => {
+            event.preventDefault();
+            let draggedId = event.dataTransfer.getData("text");
+            let draggedImg = document.getElementById(draggedId);
+            let container = document.getElementById("image-container");
+            container.appendChild(draggedImg);
+            checkOrder();
+        });
+
+        renderImages();
+    </script>
+</body>
+</html>

@@ -7,7 +7,35 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="index.css">
     <title>Arc-en-Ciel Puzzle</title>
-    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .slot {
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border: 2px solid black;
+        }
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            cursor: grab;
+            margin: 5px;
+        }
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Reconstituez l'Arc-en-ciel</h1>
