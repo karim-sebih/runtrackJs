@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu de l'arc-en-ciel</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        #images-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .rainbow-img {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #ccc;
+            cursor: grab;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Reconstituez l'arc-en-ciel</h1>
+    <button id="shuffleBtn">Mélanger les images</button>
+    <div id="game-container">
+        <div id="images-container">
+            <img src="./image/arc1.png" class="rainbow-img" data-order="1">
+            <img src="./image/arc2.png" class="rainbow-img" data-order="2">
+            <img src="./image/arc3.png" class="rainbow-img" data-order="3">
+            <img src="./image/arc4.png" class="rainbow-img" data-order="4">
+            <img src="./image/arc5.png" class="rainbow-img" data-order="5">
+            <img src="./" class="rainbow-img" data-order="6">
+        </div>
+        <button id="checkOrderBtn">Vérifier l'ordre</button>
+        <p id="message"></p>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Rendre les images déplaçables
+            $("#images-container").sortable();
+
+            // Mélanger les images
+            $("#shuffleBtn").click(function () {
+                let images = $("#images-container .rainbow-img").toArray();
+                images.sort(() => Math.random() - 0.5);
+                $("#images-container").html(images);
+            });
+
+            // Vérifier l'ordre
+            $("#checkOrderBtn").click(function () {
+                let correct = true;
+                $("#images-container .rainbow-img").each(function (index) {
+                    if ($(this).attr("data-order") != (index + 1)) {
+                        correct = false;
+                    }
+                });
+
+                if (correct) {
+                    $("#message").text("Vous avez gagné").css("color", "green");
+                } else {
+                    $("#message").text("Vous avez perdu").css("color", "red");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
