@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <title>Jeu du Taquin - La Plateforme_</title>
+   
 </head>
 <body>
     <h1>Reconstituez le logo La Plateforme_</h1>
@@ -27,7 +29,7 @@
         $(document).ready(function () {
             let correctOrder = ["1", "4", "7", "2", "5", "8", "3", "6", "9"];
             let firstClick = null;
-
+            
             function shuffleImages() {
                 let images = $("#image-container img").toArray();
                 images.sort(() => Math.random() - 0.5);
@@ -40,7 +42,7 @@
                 }).get();
 
                 if (JSON.stringify(currentOrder) === JSON.stringify(correctOrder)) {
-                    $("#message").text("Vous avez gagné !").css("color", "green");
+                    $("#message").text("Vous avez gagné").css("color", "green");
                 } else {
                     $("#message").text("Continuez...").css("color", "black");
                 }
@@ -48,25 +50,51 @@
 
             $("#shuffleButton").click(shuffleImages);
 
-            // Gestion du clic sur les images pour les échanger
+            // Seule l'image blanche (id="9") peut être déplacée
+            $("#image-container img").each(function () {
+                if ($(this).attr("id") === "9") {
+                    $(this).draggable({
+                        revert: "invalid"
+                    });
+                }
+            });
+
+            $("#image-container div").droppable({
+                accept: "#9",
+                drop: function (event, ui) {
+                    let dragged = ui.draggable;
+                    let target = $(this).children("img");
+
+                    // Échange la position de l'image blanche et celle de la case cible
+                    let tempSrc = dragged.attr("src");
+                    dragged.attr("src", target.attr("src"));
+                    target.attr("src", tempSrc);
+
+                    let tempId = dragged.attr("id");
+                    dragged.attr("id", target.attr("id"));
+                    target.attr("id", tempId);
+
+                    checkOrder();
+                }
+            });
+
+            // Échange au clic
             $("#image-container img").click(function () {
                 if (!firstClick) {
                     firstClick = $(this);
-                    firstClick.css("border", "2px solid red"); // Mettre une bordure pour indiquer la sélection
+                    firstClick.css("border", "2px solid red"); // Indiquer la sélection
                 } else {
                     let secondClick = $(this);
-
+                    
                     // Échange des images
                     let tempSrc = firstClick.attr("src");
-                    let tempId = firstClick.attr("id");
-
                     firstClick.attr("src", secondClick.attr("src"));
-                    firstClick.attr("id", secondClick.attr("id"));
-
                     secondClick.attr("src", tempSrc);
+
+                    let tempId = firstClick.attr("id");
+                    firstClick.attr("id", secondClick.attr("id"));
                     secondClick.attr("id", tempId);
 
-                    // Réinitialisation de la sélection
                     firstClick.css("border", "none");
                     firstClick = null;
 

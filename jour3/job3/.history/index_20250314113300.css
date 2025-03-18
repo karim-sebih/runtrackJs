@@ -1,4 +1,12 @@
-
+#image-container {
+    display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(3,1fr);
+    gap: 2px;
+    margin: 20px auto;
+    width: 304px;
+    border: 2px solid black;
+}
 
 
 body {
@@ -12,7 +20,6 @@ body {
     gap: 2px;
     margin: 20px auto;
     width: 310px;
-    border: 2px solid black;
 }
 .gallery img {
     width: 100px;

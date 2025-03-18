@@ -1,0 +1,9 @@
+.image-container {
+    display: grid;
+  grid-template-columns: repeat(3);
+  grid-template-rows: repeat("",1fr);
+    gap: 2px;
+    margin: 20px auto;
+    width: 304px;
+    border: 2px solid black;
+}

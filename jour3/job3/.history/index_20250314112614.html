@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Jeu du Taquin - La Plateforme_</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(3, 100px);
+            gap: 2px;
+            margin: 20px auto;
+            width: 310px;
+        }
+        .gallery img {
+            width: 100px;
+            height: 100px;
+            cursor: grab;
+        }
+        #message {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Reconstituez le logo La Plateforme_</h1>
+    <button id="shuffleButton">Mélanger les images</button>
+    <div class="gallery" id="image-container">
+        <div>
+        <img src="./images/logo1.PNG" alt="" id="1">
+    </div>
+        <div><img src="./images/logo2.PNG" alt="" id="2"></div>
+        </div><img src="./images/logo3.PNG" alt="" id="3"></div>
+    </div><img src="./images/logo4.PNG" alt="" id="4">
+        <img src="./images/logo5.PNG" alt="" id="5">
+        <img src="./images/logo6.PNG" alt="" id="6">
+        <img src="./images/logo7.PNG" alt="" id="7">
+        <img src="./images/logo8.PNG" alt="" id="8">
+        
+    </div>
+    <div id="message"></div>
+
+    <script>
+        $(document).ready(function () {
+            let correctOrder = ["1", "4", "7", "2", "5", "8", "6", "9", "3"];
+
+            function shuffleImages() {
+                let images = $("#image-container img").toArray();
+                images.sort(() => Math.random() - 0.5);
+                $("#image-container").html(images);
+            }
+
+            function checkOrder() {
+                let currentOrder = $("#image-container img").map(function () {
+                    return this.id;
+                }).get();
+
+                if (JSON.stringify(currentOrder) === JSON.stringify(correctOrder)) {
+                    $("#message").text("Vous avez gagné").css("color", "green");
+                } else {
+                    $("#message").text("Continuez...").css("color", "black");
+                }
+            }
+
+            $("#shuffleButton").click(shuffleImages);
+
+            $("#image-container").sortable({
+                update: checkOrder
+            }).disableSelection();
+        });
+    </script>
+</body>
+</html>
