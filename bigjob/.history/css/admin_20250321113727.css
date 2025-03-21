@@ -3,21 +3,14 @@
 /* Style global de la page */
 body {
     font-family: Arial, sans-serif;
-    background-color: #547EE1;
+    background-color: #007BFF;
     margin: 0;
     padding: 20px;
 }
 
-
-.logo {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    margin-bottom:45px ;
-}
 a{
     text-decoration: none;
-    color: white;
+    
 }
 /* Titre principal */
 h1 {
@@ -51,7 +44,7 @@ label {
 
 /* Style pour les champs de saisie */
 input[type="email"], select {
-    width: 95%;
+    width: 100%;
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ccc;

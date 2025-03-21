@@ -92,7 +92,7 @@ form {
 
 input {
 	background-color: #0084FA;
-    color: #fff;
+    te
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;
@@ -156,7 +156,7 @@ a {
 	text-decoration: none;
 	font-size: 14px;
 	margin: 8px 0 16px;
-	color: #fff;
+	color: #333;
 }
 
 .overlay-container {
