@@ -1,0 +1,1 @@
+document.getElementById("pokemonfilter").addEventListener("click", filterPokemon);

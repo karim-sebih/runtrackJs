@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #0084FA;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: auto;
+    
+  }
+
+  .logo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.logo img{
+    width: 10%;
+    
+}

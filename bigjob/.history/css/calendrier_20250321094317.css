@@ -1,0 +1,126 @@
+/* Style global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #547EE1;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin-top: 30px;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+/* Formulaire */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+form label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #547EE1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+/* Message de statut (succès ou erreur) */
+#message {
+    font-size: 1.1rem;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none; /* Commence caché */
+    text-align: center;
+    transition: opacity 0.3s ease-in-out; /* Effet de transition pour l'apparition */
+}
+
+#message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+#message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+#message.show {
+    display: block; /* Afficher le message */
+    opacity: 1; /* Rendre le message visible */
+}
+
+
+/* Liste des demandes */
+#requests-list {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+}
+
+#requests-list div {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#requests-list div:last-child {
+    border-bottom: none;
+}
+
+#requests-list div p {
+    font-size: 1rem;
+    color: #555;
+}

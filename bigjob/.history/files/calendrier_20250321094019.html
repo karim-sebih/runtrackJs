@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendrier des présences</title>
+    <link rel="stylesheet" href="../c/.css">
+</head>
+<body>
+    <h1>Demande de présence</h1>
+    <form id="presence-form">
+        <label for="date">Choisir une date :</label>
+        <input type="date" id="date" required>
+        <button type="submit">Demander une présence</button>
+    </form>
+    <div id="message"></div>
+
+    <h3>Demandes de présence enregistrées :</h3>
+    <div id="requests-list"></div> <!-- Section pour afficher les demandes -->
+
+    <script src="../js/calendrier.js"></script>
+</body>
+</html>

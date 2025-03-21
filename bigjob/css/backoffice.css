@@ -1,0 +1,81 @@
+/* backoffice.css */
+
+/* Style global de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #396be0;
+    margin: 0;
+    padding: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Titre principal */
+h1 {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Style pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Style pour les en-têtes du tableau */
+th {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Style pour les cellules du tableau */
+td {
+    background-color: white;
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Style pour les boutons d'action */
+button {
+    padding: 5px 10px;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+/* Bouton "Accepter" */
+button:nth-child(1) {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Bouton "Refuser" */
+button:nth-child(2) {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Effet au survol des boutons */
+button:hover {
+    opacity: 0.8;
+}
+
+/* Style pour les lignes du tableau */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Style pour les lignes au survol */
+tr:hover {
+    background-color: #f1f1f1;
+}

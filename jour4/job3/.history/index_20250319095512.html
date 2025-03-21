@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <script src="script.js" type=""></script>
+    <title>Filtrer Pokémon</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        input, select, button { margin: 5px; padding: 8px; }
+        ul { list-style-type: none; padding: 0; }
+        li { padding: 5px; border-bottom: 1px solid #ddd; }
+    </style>
+</head>
+<body>
+
+    <h2>Filtrer les Pokémon</h2>
+    <input type="text" id="idFilter" placeholder="ID">
+    <input type="text" id="nameFilter" placeholder="Nom">
+    <select id="typeFilter">
+        <option value="">Tous les types</option>
+    </select>
+    <button onclick="filterPokemon()">Filtrer</button>
+
+    <ul id="pokemonList"></ul>
+
+   
+</body>
+</html>

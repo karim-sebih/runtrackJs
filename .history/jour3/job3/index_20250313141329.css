@@ -1,8 +1,0 @@
-.image-container {
-    display: grid;
-  
-    gap: 2px;
-    margin: 20px auto;
-    width: 304px;
-    border: 2px solid black;
-}

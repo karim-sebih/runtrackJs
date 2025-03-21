@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: auto;
+    
+  }
+
+  .logo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.container{
+	position: relative;
+	overflow: hidden;
+	min-height: 480px;
+	width: 768px;
+	max-width: 100%;
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 8px 24px  rgba(0, 32, 63, .45),
+		  0 8px 8px rgba(0, 32, 63, .45);
+}
+
+.form-container {
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: .6s ease-in-out;
+}
+
+.sign-up-container {
+	left: 0;
+	width: 50%;
+	opacity: 0;
+	z-index: 1;
+}
+
+.container.panel-active .sign-up-container {
+	transform: translateX(100%);
+	opacity: 1;
+	z-index: 5;
+	animation: show .6s
+}
+
+@keyframes show {
+	0%, 49.99% {
+		opacity: 0;
+		z-index: 1;
+	}
+
+	50%, 100% {
+		opacity: 1;
+		z-index: 5;
+	}
+}
+
+.container.panel-active .login-container {
+	transform: translateX(100%);
+}
+
+.login-container {
+	left: 0;
+	width: 50%;
+	z-index: 2;
+}
+
+form {
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
+}
+
+input {
+	background-color: #0084FA;
+    color: #fff;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+}
+
+but

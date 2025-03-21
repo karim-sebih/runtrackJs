@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: auto;
+    
+  }
+
+  .logo {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    
+}
+
+.card {
+    margin-top: 3%;
+    margin-left: 5;
+}
+
+.card {
+    width: 490px;
+    height: 150px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    background: transparent;
+    position: relative;
+    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.8);
+    justify-content: space-evenly;
+}
+
+.card .btn {
+    width: 150px;
+    height: 40px;
+    background: #0084FA;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5%;
+    color: #ffff;
+    text-decoration: none;
+    font-family: "Press Start 2P", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: small;
+    
+}
+
+.card .btn:hover {
+    outline-color: transparent;
+    outline-style: solid;
+    box-shadow: 0 0 0 4px #ffbd4f;
+}
+

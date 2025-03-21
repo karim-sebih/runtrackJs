@@ -1,0 +1,107 @@
+const container = document.getElementById('container');
+const loginButton = document.getElementById('login');
+const signUpButton = document.getElementById('signUp');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add('panel-active');
+})
+
+loginButton.addEventListener('click', () => {
+	container.classList.remove('panel-active');
+})
+
+document.addEventListener('DOMContentLoaded', function () {
+    const signUpForm = document.querySelector('.sign-up-container form');
+    const loginForm = document.querySelector('.login-container form');
+
+    function showError(input, message) {
+        let errorSpan = input.nextElementSibling;
+        if (!errorSpan || !errorSpan.classList.contains('error-message')) {
+            errorSpan = document.createElement('span');
+            errorSpan.classList.add('error-message');
+            input.parentNode.insertBefore(errorSpan, input.nextSibling);
+        }
+        errorSpan.textContent = message;
+        input.classList.add('input-error');
+    }
+
+    function clearError(input) {
+        let errorSpan = input.nextElementSibling;
+        if (errorSpan && errorSpan.classList.contains('error-message')) {
+            errorSpan.remove();
+        }
+        input.classList.remove('input-error');
+    }
+
+    function validateEmail(email) {
+        return email.endsWith('@laplateforme.io');
+    }
+
+    function validatePasswordNotEmpty(password) {
+        return password.trim() !== "";
+    }
+
+    // Validation pour l'inscription
+    signUpForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const emailInput = signUpForm.querySelector('input[type="email"]');
+        const passwordInput = signUpForm.querySelector('input[type="password"]');
+        const nameInput = signUpForm.querySelector('input[type="text"]');
+
+        let isValid = true;
+
+        if (nameInput.value.trim() === "") {
+            showError(nameInput, "Le nom ne peut pas être vide.");
+            isValid = false;
+        } else {
+            clearError(nameInput);
+        }
+
+        if (!validateEmail(emailInput.value)) {
+            showError(emailInput, "L'email doit être une adresse @laplateforme.io.");
+            isValid = false;
+        } else {
+            clearError(emailInput);
+        }
+
+        if (!validatePasswordNotEmpty(passwordInput.value)) {
+            showError(passwordInput, "Le mot de passe ne peut pas être vide.");
+            isValid = false;
+        } else {
+            clearError(passwordInput);
+        }
+
+        if (isValid) {
+            alert("Compte créé avec succès !");
+            signUpForm.reset();
+        }
+    });
+
+    // Validation pour la connexion
+    loginForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const emailInput = loginForm.querySelector('input[type="email"]');
+        const passwordInput = loginForm.querySelector('input[type="password"]');
+
+        let isValid = true;
+
+        if (!validateEmail(emailInput.value)) {
+            showError(emailInput, "L'email doit être une adresse @laplateforme.io.");
+            isValid = false;
+        } else {
+            clearError(emailInput);
+        }
+
+        if (!validatePasswordNotEmpty(passwordInput.value)) {
+            showError(passwordInput, "Le mot de passe ne peut pas être vide.");
+            isValid = false;
+        } else {
+            clearError(passwordInput);
+        }
+
+        if (isValid) {
+            alert("Connexion réussie !");
+            loginForm.reset();
+        }
+    });
+});
